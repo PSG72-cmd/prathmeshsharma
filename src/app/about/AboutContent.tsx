@@ -29,7 +29,7 @@ export default function AboutContent() {
                   Building, not waiting
                 </h2>
                 <p className="text-text-muted leading-relaxed mb-4">
-                  3rd-year B.Tech CSE (AI/ML) at Indus University (2024–2028).
+                  3rd-year B.Tech CSE at Indus University (2024–2028).
                   Instead of waiting for a formal internship to start doing real
                   work, I started shipping products from year one — solving actual
                   problems for actual users.
@@ -73,7 +73,7 @@ export default function AboutContent() {
                 </div>
                 <div className="flex justify-between border-b border-border/50 pb-1.5">
                   <span className="text-text-dim">EDUCATION</span>
-                  <span className="text-text">B.Tech CSE (AI/ML)</span>
+                  <span className="text-text">B.Tech CSE</span>
                 </div>
                 <div className="flex justify-between border-b border-border/50 pb-1.5">
                   <span className="text-text-dim">INSTITUTION</span>

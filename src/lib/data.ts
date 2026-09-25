@@ -6,6 +6,7 @@ export interface Project {
   stats: { label: string; value: string }[];
   stack: string[];
   liveUrl?: string;
+  repoUrl?: string;
   size: "large" | "small";
 }
 
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "JavaScript", "Tailwind CSS", "PostHog", "Vercel"],
     liveUrl: "https://attendance-bunk-planner.vercel.app",
+    repoUrl: "https://github.com/PSG72-cmd/Attendance-Bunk-planner",
     size: "large",
   },
   {
@@ -71,6 +73,7 @@ export const projects: Project[] = [
       "Vercel",
     ],
     liveUrl: "https://market-sentiment-kappa.vercel.app",
+    repoUrl: "https://github.com/PSG72-cmd/market-sentiment",
     size: "large",
   },
   {
@@ -87,23 +90,25 @@ export const projects: Project[] = [
       { label: "METHOD", value: "RL" },
     ],
     stack: ["Python", "Reinforcement Learning"],
+    repoUrl: "https://github.com/PSG72-cmd/Cognition-Env",
     size: "small",
   },
   {
     slug: "ai-agent-capstone",
-    name: "AI Agent Capstone",
+    name: "BondKeeper — AI Agent Capstone",
     tagline:
-      "Complete AI agent for Google's Intensive AI Workshop, via Kaggle.",
+      "Complete AI concierge agent for Google's Intensive AI Workshop, via Kaggle & Streamlit.",
     description: [
-      "Built and submitted a complete AI agent for Google's official Intensive AI Workshop.",
-      "Applied multi-step reasoning, context-aware generation, and structured prompt engineering.",
-      "Designed and documented the full agent architecture independently — 100% Python.",
+      "Built and submitted a complete AI social concierge agent for Google's official Intensive AI Workshop.",
+      "Applied multi-step reasoning, context-aware memory, and structured prompt engineering using Gemini models.",
+      "Designed and documented the full agent architecture independently with Streamlit UI and SQLite memory store.",
     ],
     stats: [
       { label: "PLATFORM", value: "KAGGLE" },
-      { label: "CODE", value: "100% PY" },
+      { label: "MODEL", value: "GEMINI" },
     ],
-    stack: ["Python", "Google Gemini API", "Kaggle"],
+    stack: ["Python", "Google Gemini API", "Streamlit", "SQLite"],
+    repoUrl: "https://github.com/PSG72-cmd/bondkeeper",
     size: "small",
   },
 ];

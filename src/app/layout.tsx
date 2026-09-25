@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s — Prathmesh Sharma",
   },
   description:
-    "3rd-year B.Tech CSE (AI/ML) student who builds AI-powered products end-to-end. Three shipped independently, including a React app with 50+ real users.",
+    "3rd-year B.Tech CSE student who builds AI-powered products end-to-end. Three shipped independently, including a React app with 50+ real users.",
   keywords: [
     "Prathmesh Sharma",
     "AI/ML developer",

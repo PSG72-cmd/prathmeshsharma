@@ -88,12 +88,21 @@ export default function ProjectsContent() {
                 </div>
               </RevealItem>
 
-              {/* Live link */}
-              {project.liveUrl && (
+              {/* Action links */}
+              {(project.liveUrl || project.repoUrl) && (
                 <RevealItem index={3}>
-                  <Button href={project.liveUrl} variant="outline" external>
-                    View Live &rarr;
-                  </Button>
+                  <div className="flex flex-wrap items-center gap-4">
+                    {project.liveUrl && (
+                      <Button href={project.liveUrl} variant="filled" external>
+                        View Live &rarr;
+                      </Button>
+                    )}
+                    {project.repoUrl && (
+                      <Button href={project.repoUrl} variant="outline" external>
+                        GitHub Repo &rarr;
+                      </Button>
+                    )}
+                  </div>
                 </RevealItem>
               )}
             </SectionReveal>
