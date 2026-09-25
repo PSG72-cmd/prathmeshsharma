@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prathmesh Sharma — Portfolio
+
+Personal portfolio website built with the **Blueprint Console** design system — dark, structured, schematic.
+
+## Stack
+
+- **Next.js 15** (App Router, TypeScript)
+- **Tailwind CSS v4** (fully custom theme — no default palette)
+- **Framer Motion** for animation/gesture work
+- **next/font** for font loading (Fraunces, Schibsted Grotesk, IBM Plex Mono)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout (fonts, nav, footer)
+│   ├── page.tsx            # Home page
+│   ├── globals.css         # Design system + custom properties
+│   ├── projects/
+│   │   ├── page.tsx        # Projects page
+│   │   └── ProjectsContent.tsx
+│   ├── about/
+│   │   ├── page.tsx        # About page
+│   │   └── AboutContent.tsx
+│   └── contact/
+│       ├── page.tsx        # Contact page
+│       └── ContactContent.tsx
+├── components/
+│   ├── Nav.tsx             # Fixed navigation
+│   ├── Footer.tsx          # Footer with links
+│   ├── Button.tsx          # CTA button (filled/outline)
+│   ├── HeroHeadline.tsx    # Character-stagger headline
+│   ├── ProjectCard.tsx     # Bento card with tilt + magnetic hover
+│   ├── SectionReveal.tsx   # Scroll-reveal wrapper
+│   ├── SkillsMarquee.tsx   # Continuous horizontal marquee
+│   └── PageTransition.tsx  # AnimatePresence page wrapper
+└── lib/
+    ├── data.ts             # All content (projects, skills, certifications, etc.)
+    └── motion.ts           # Shared animation config
+```
 
-## Learn More
+## Editing Content
 
-To learn more about Next.js, take a look at the following resources:
+All portfolio content is in `src/lib/data.ts`. Adding a new project, skill, or link is a single-file change.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push to GitHub
+2. Import into [Vercel](https://vercel.com)
+3. Deploy — zero config needed
 
-## Deploy on Vercel
+## Design Decisions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **No gradients, no glassmorphism** — flat surfaces with 1px hairline borders
+- **Single accent color** (`#FF7A30`) — no secondary accents
+- **Three-font system** — Fraunces (display), Schibsted Grotesk (body), IBM Plex Mono (labels/stats)
+- **Blueprint grid** — faint 64px cell grid visible behind hero sections
+- **8px spacing scale** — consistent spacing throughout (8/16/24/32/48/64/96/128)
+- **Reduced motion respected** — all animations disabled when `prefers-reduced-motion` is set
