@@ -29,7 +29,7 @@ export default function AboutContent() {
                   Building, not waiting
                 </h2>
                 <p className="text-text-muted leading-relaxed mb-4">
-                  2nd-year B.Tech CSE (AI/ML) at Indus University (2024–2028).
+                  3rd-year B.Tech CSE (AI/ML) at Indus University (2024–2028).
                   Instead of waiting for a formal internship to start doing real
                   work, I started shipping products from year one — solving actual
                   problems for actual users.

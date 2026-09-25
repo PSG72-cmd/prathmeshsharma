@@ -32,7 +32,7 @@ export default function HomePage() {
             <div className="lg:col-span-7">
               <HeroHeadline text="Prathmesh Sharma" />
 
-              <StatusLine text="AI/ML · FULL-STACK · CLOUD — B.TECH CSE, 2ND YEAR — SHIPPING SINCE 2024" />
+              <StatusLine text="AI/ML · FULL-STACK · CLOUD — B.TECH CSE, 3RD YEAR — SHIPPING SINCE 2024" />
 
               <motion.p
                 className="mt-6 max-w-xl text-text-muted leading-relaxed text-sm md:text-base"
