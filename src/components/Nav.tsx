@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,10 +17,22 @@ export default function Nav() {
         {/* Logo mark */}
         <Link
           href="/"
-          className="font-mono text-xs tracking-widest text-text-dim hover:text-accent transition-colors duration-200"
+          className="flex items-center gap-2.5 font-mono text-xs tracking-widest text-text-dim hover:text-accent transition-colors duration-200 group"
           aria-label="Home"
         >
-          PS_
+          <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-border group-hover:border-accent transition-colors">
+            <Image
+              src="/prathmesh.jpg"
+              alt="Prathmesh Sharma"
+              width={28}
+              height={28}
+              className="h-full w-full object-cover"
+              priority
+            />
+          </span>
+          <span className="font-mono text-xs tracking-widest text-text font-medium group-hover:text-accent transition-colors">
+            PS_
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -82,9 +95,9 @@ export default function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden border-t border-border bg-bg overflow-hidden"
+            className="md:hidden border-t border-b border-border bg-surface shadow-2xl overflow-hidden"
           >
-            <ul className="flex flex-col px-6 py-4 gap-4">
+            <ul className="flex flex-col px-6 py-5 gap-3">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (

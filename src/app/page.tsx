@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import HeroHeadline, { StatusLine } from "@/components/HeroHeadline";
 import Button from "@/components/Button";
@@ -26,35 +27,79 @@ export default function HomePage() {
       {/* ─── Hero ───────────────────────────────────────────────────────── */}
       <section className="relative blueprint-grid hero-vignette">
         {/* Corner brackets on section */}
-        <div className="corner-brackets mx-auto max-w-6xl px-6 md:px-8 py-24 md:py-32 lg:py-40">
-          <HeroHeadline text="Prathmesh Sharma" />
+        <div className="corner-brackets mx-auto max-w-6xl px-6 md:px-8 py-20 md:py-28 lg:py-36">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7">
+              <HeroHeadline text="Prathmesh Sharma" />
 
-          <StatusLine text="AI/ML · FULL-STACK · CLOUD — B.TECH CSE, 2ND YEAR — SHIPPING SINCE 2024" />
+              <StatusLine text="AI/ML · FULL-STACK · CLOUD — B.TECH CSE, 2ND YEAR — SHIPPING SINCE 2024" />
 
-          <motion.p
-            className="mt-6 max-w-xl text-text-muted leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EXPO_OUT, delay: 0.8 }}
-          >
-            Builds AI-powered products end-to-end — model logic to deployed
-            interface. Three shipped independently, including a React app with
-            50+ real users and an AI agent on Google Gemini.
-          </motion.p>
+              <motion.p
+                className="mt-6 max-w-xl text-text-muted leading-relaxed text-sm md:text-base"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: EXPO_OUT, delay: 0.8 }}
+              >
+                Builds AI-powered products end-to-end — model logic to deployed
+                interface. Three shipped independently, including a React app with
+                50+ real users and an AI agent on Google Gemini.
+              </motion.p>
 
-          <motion.div
-            className="mt-8 flex flex-wrap gap-4"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EXPO_OUT, delay: 1.0 }}
-          >
-            <Button href="/projects" variant="filled">
-              View Projects
-            </Button>
-            <Button href="/contact" variant="outline">
-              Get in Touch
-            </Button>
-          </motion.div>
+              <motion.div
+                className="mt-8 flex flex-wrap gap-4"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: EXPO_OUT, delay: 1.0 }}
+              >
+                <Button href="/projects" variant="filled">
+                  View Projects
+                </Button>
+                <Button href="/contact" variant="outline">
+                  Get in Touch
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Profile Card */}
+            <motion.div
+              className="lg:col-span-5 flex justify-center lg:justify-end"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EXPO_OUT, delay: 0.6 }}
+            >
+              <div className="w-full max-w-[320px] sm:max-w-[340px] border border-border bg-surface p-4 corner-brackets relative shadow-2xl">
+                {/* Console header */}
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-border/80 font-mono text-[10px] tracking-widest text-text-dim">
+                  <span>ID: PS-2024</span>
+                  <span className="flex items-center gap-1.5 text-accent">
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                    ONLINE
+                  </span>
+                </div>
+
+                {/* Photo frame */}
+                <div className="relative aspect-square w-full overflow-hidden border border-border bg-bg/50">
+                  <Image
+                    src="/prathmesh.jpg"
+                    alt="Prathmesh Sharma"
+                    fill
+                    sizes="(max-width: 640px) 280px, 340px"
+                    className="object-cover object-center filter grayscale contrast-[1.05] hover:grayscale-0 transition-all duration-500"
+                    priority
+                  />
+                  <div className="absolute top-2 left-2 font-mono text-[9px] text-accent/80 tracking-widest bg-bg/80 px-1 py-0.5 border border-border/60">
+                    PFP.01
+                  </div>
+                </div>
+
+                {/* Console footer metadata */}
+                <div className="mt-3 pt-3 border-t border-border/80 flex items-center justify-between font-mono text-[10px]">
+                  <span className="text-text font-medium tracking-wider">PRATHMESH SHARMA</span>
+                  <span className="text-text-dim">AHMEDABAD, IN</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

@@ -41,7 +41,7 @@ export default function ProjectsContent() {
                     {project.stats.map((stat) => (
                       <div
                         key={stat.label}
-                        className="font-mono text-[11px] tracking-wider text-right"
+                        className="font-mono text-[11px] tracking-wider text-left md:text-right"
                       >
                         <div className="text-text-dim">{stat.label}</div>
                         <div className="text-accent text-lg font-medium mt-1">

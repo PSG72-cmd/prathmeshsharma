@@ -169,3 +169,21 @@ h3 {
     animation: none;
   }
 }
+
+/* ─── Hide Next.js Dev Indicator / Overlays ───────────────────────────────── */
+nextjs-portal,
+[data-nextjs-dev-tools-button],
+[data-nextjs-toast],
+div[data-nextjs-toast],
+#nextjs-dev-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
+/* ─── Mobile Viewport Safety ─────────────────────────────────────────────── */
+body {
+  overflow-x: hidden;
+}
+
