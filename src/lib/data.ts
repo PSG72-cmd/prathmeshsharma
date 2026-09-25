@@ -191,7 +191,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    url: "https://linkedin.com/in/prathmesh-sharma",
+    url: "https://www.linkedin.com/in/prathmesh-sharma-95ab39253",
     type: "linkedin",
   },
   {

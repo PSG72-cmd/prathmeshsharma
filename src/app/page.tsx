@@ -103,27 +103,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Featured Work — Bento Grid ──────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-6 md:px-8 py-16 md:py-24">
-        <SectionReveal>
-          <h2 className="font-display text-text mb-2">Featured Work</h2>
-          <p className="font-mono text-[11px] tracking-[0.15em] text-text-dim mb-12">
-            SELECTED PROJECTS — 2024–2025
-          </p>
-        </SectionReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {featured.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
-          ))}
-        </div>
-      </section>
-
-      {/* ─── Skills Strip — Marquee ──────────────────────────────────── */}
-      <section className="py-8">
-        <SkillsMarquee />
-      </section>
-
       {/* ─── Skills Grid — Four Quadrants ────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 md:px-8 py-16 md:py-24">
         <SectionReveal>
@@ -155,6 +134,27 @@ export default function HomePage() {
             </RevealItem>
           ))}
         </SectionReveal>
+      </section>
+
+      {/* ─── Skills Strip — Marquee ──────────────────────────────────── */}
+      <section className="py-8">
+        <SkillsMarquee />
+      </section>
+
+      {/* ─── Featured Work — Bento Grid ──────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 md:px-8 py-16 md:py-24">
+        <SectionReveal>
+          <h2 className="font-display text-text mb-2">Featured Work</h2>
+          <p className="font-mono text-[11px] tracking-[0.15em] text-text-dim mb-12">
+            SELECTED PROJECTS — 2024–2025
+          </p>
+        </SectionReveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {featured.map((project, i) => (
+            <ProjectCard key={project.slug} project={project} index={i} />
+          ))}
+        </div>
       </section>
 
       {/* ─── Closing CTA ─────────────────────────────────────────────── */}

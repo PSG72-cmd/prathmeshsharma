@@ -65,8 +65,8 @@ export default function ContactContent() {
                     href={link.url}
                     target={link.type === "email" ? undefined : "_blank"}
                     rel={link.type === "email" ? undefined : "noopener noreferrer"}
+                    download={link.type === "resume" ? "Prathmesh_Sharma_Resume.pdf" : undefined}
                     className="group flex items-center gap-4 border border-border bg-surface px-6 py-4 transition-colors duration-200 hover:border-accent"
-                    {...(link.type === "resume" ? { download: true } : {})}
                   >
                     <span className="font-mono text-[11px] tracking-[0.15em] text-text-dim group-hover:text-accent transition-colors duration-200">
                       {link.label.toUpperCase()}
@@ -77,7 +77,7 @@ export default function ContactContent() {
                         : link.type === "github"
                           ? "PSG72-cmd"
                           : link.type === "linkedin"
-                            ? "prathmesh-sharma"
+                            ? "prathmesh-sharma-95ab39253"
                             : "Download PDF"}
                     </span>
                     <span className="font-mono text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
