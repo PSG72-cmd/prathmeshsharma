@@ -6,31 +6,38 @@ import { socialLinks } from "@/lib/data";
 
 export default function ContactContent() {
   const [formState, setFormState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    company: "", // Honeypot field
   });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setFormState("sending");
+    setErrorMessage("");
 
     try {
-      const res = await fetch("https://formspree.io/f/xpwdjrzo", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success) {
         setFormState("sent");
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", company: "" });
       } else {
         setFormState("error");
+        setErrorMessage(data.error || "Something went wrong. Try emailing directly instead.");
       }
     } catch {
       setFormState("error");
+      setErrorMessage("Network error. Try emailing directly instead.");
     }
   };
 
@@ -99,6 +106,22 @@ export default function ContactContent() {
 
             <RevealItem index={1}>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field - invisible to humans, catches spam bots */}
+                <div className="absolute -left-[9999px] opacity-0 pointer-events-none" aria-hidden="true">
+                  <label htmlFor="contact-company">Company</label>
+                  <input
+                    id="contact-company"
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.company}
+                    onChange={(e) =>
+                      setFormData({ ...formData, company: e.target.value })
+                    }
+                  />
+                </div>
+
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -110,6 +133,7 @@ export default function ContactContent() {
                     id="contact-name"
                     type="text"
                     required
+                    maxLength={100}
                     value={formData.name}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
@@ -130,6 +154,7 @@ export default function ContactContent() {
                     id="contact-email"
                     type="email"
                     required
+                    maxLength={100}
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
@@ -149,6 +174,7 @@ export default function ContactContent() {
                   <textarea
                     id="contact-message"
                     required
+                    maxLength={5000}
                     rows={5}
                     value={formData.message}
                     onChange={(e) =>
@@ -179,7 +205,7 @@ export default function ContactContent() {
 
                 {formState === "error" && (
                   <p className="font-mono text-[11px] text-red-400 mt-2">
-                    Something went wrong. Try emailing directly instead.
+                    {errorMessage || "Something went wrong. Try emailing directly instead."}
                   </p>
                 )}
               </form>

@@ -143,11 +143,9 @@ export const skills: SkillCategory[] = [
       "Linux (Ubuntu Server)",
     ],
   },
-  {
-    label: "SYSTEMS (IN PROGRESS)",
-    items: ["ROS2", "Robotics", "C"],
-  },
 ];
+
+export const currentlyExploring = ["ROS2", "Robotics", "C"];
 
 // ─── Certifications ─────────────────────────────────────────────────────────
 

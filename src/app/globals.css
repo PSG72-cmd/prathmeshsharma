@@ -5,12 +5,43 @@
 /* ─── Blueprint Console Design System ─────────────────────────────────────── */
 
 :root {
+  /* Light mode (drafting paper aesthetic) */
+  --bg-rgb: 245 243 239;
+  --surface-rgb: 255 255 255;
+  --border-rgb: 216 219 221;
+  --text-rgb: 20 23 27;
+  --text-muted-rgb: 78 85 97;
+  --text-dim-rgb: 114 120 131;
+  --accent-rgb: 211 84 0;
+  --accent-dim-rgb: 230 126 34;
+
+  --bg: #F5F3EF;
+  --surface: #FFFFFF;
+  --border: #D8DBDD;
+  --text: #14171B;
+  --text-muted: #4E5561;
+  --text-dim: #727883;
+  --accent: #D35400;
+  --accent-dim: #E67E22;
+}
+
+.dark {
+  /* Dark mode (blueprint console aesthetic) */
+  --bg-rgb: 11 13 16;
+  --surface-rgb: 20 23 27;
+  --border-rgb: 38 43 49;
+  --text-rgb: 242 243 245;
+  --text-muted-rgb: 199 203 209;
+  --text-dim-rgb: 133 141 153;
+  --accent-rgb: 255 122 48;
+  --accent-dim-rgb: 122 61 26;
+
   --bg: #0B0D10;
   --surface: #14171B;
   --border: #262B31;
   --text: #F2F3F5;
   --text-muted: #C7CBD1;
-  --text-dim: #6B7280;
+  --text-dim: #858D99;
   --accent: #FF7A30;
   --accent-dim: #7A3D1A;
 }
@@ -23,6 +54,9 @@
 
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 body {
@@ -30,8 +64,13 @@ body {
   color: var(--text-muted);
   font-family: var(--font-schibsted-grotesk), system-ui, sans-serif;
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ─── Typography ──────────────────────────────────────────────────────────── */
@@ -61,6 +100,13 @@ h3 {
 /* ─── Blueprint grid background ───────────────────────────────────────────── */
 
 .blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(200, 205, 210, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(200, 205, 210, 0.45) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.dark .blueprint-grid {
   background-image:
     linear-gradient(to right, rgba(38, 43, 49, 0.3) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(38, 43, 49, 0.3) 1px, transparent 1px);
@@ -101,6 +147,14 @@ h3 {
 .hero-vignette {
   background: radial-gradient(
     ellipse 60% 50% at 50% 30%,
+    rgba(211, 84, 0, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+.dark .hero-vignette {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 30%,
     rgba(255, 122, 48, 0.04) 0%,
     transparent 70%
   );
@@ -139,19 +193,13 @@ h3 {
   background: var(--text-dim);
 }
 
-/* ─── Marquee ─────────────────────────────────────────────────────────────── */
+/* ─── Skills list pseudo-element chevron (a11y) ──────────────────────────── */
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+.chevron-item::before {
+  content: ">";
+  color: var(--text-dim);
+  margin-right: 0.5rem;
+  font-family: var(--font-ibm-plex-mono), monospace;
 }
 
 /* ─── Reduced motion ──────────────────────────────────────────────────────── */
@@ -163,10 +211,6 @@ h3 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .animate-marquee {
-    animation: none;
   }
 }
 
@@ -181,9 +225,3 @@ div[data-nextjs-toast],
   pointer-events: none !important;
   opacity: 0 !important;
 }
-
-/* ─── Mobile Viewport Safety ─────────────────────────────────────────────── */
-body {
-  overflow-x: hidden;
-}
-

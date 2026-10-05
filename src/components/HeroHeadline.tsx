@@ -11,29 +11,36 @@ export default function HeroHeadline({ text }: HeroHeadlineProps) {
   const words = text.split(" ");
 
   return (
-    <h1 className="font-display text-text leading-[1.05]" style={{ perspective: "600px" }}>
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-block mr-[0.25em]">
-          {word.split("").map((char, charIndex) => {
-            const globalIndex = words
-              .slice(0, wordIndex)
-              .reduce((sum, w) => sum + w.length, 0) + charIndex;
-            return (
-              <motion.span
-                key={`${wordIndex}-${charIndex}`}
-                className="inline-block"
-                variants={heroCharacter}
-                initial="hidden"
-                animate="visible"
-                custom={globalIndex}
-                style={{ transformOrigin: "bottom center" }}
-              >
-                {char}
-              </motion.span>
-            );
-          })}
-        </span>
-      ))}
+    <h1
+      className="font-display text-text leading-[1.05]"
+      aria-label={text}
+      style={{ perspective: "600px" }}
+    >
+      <span aria-hidden="true">
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-block mr-[0.25em]">
+            {word.split("").map((char, charIndex) => {
+              const globalIndex =
+                words
+                  .slice(0, wordIndex)
+                  .reduce((sum, w) => sum + w.length, 0) + charIndex;
+              return (
+                <motion.span
+                  key={`${wordIndex}-${charIndex}`}
+                  className="inline-block"
+                  variants={heroCharacter}
+                  initial="hidden"
+                  animate="visible"
+                  custom={globalIndex}
+                  style={{ transformOrigin: "bottom center" }}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </span>
+        ))}
+      </span>
     </h1>
   );
 }

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,14 +9,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: "#0B0D10",
-        surface: "#14171B",
-        border: "#262B31",
-        text: "#F2F3F5",
-        "text-muted": "#C7CBD1",
-        "text-dim": "#6B7280",
-        accent: "#FF7A30",
-        "accent-dim": "#7A3D1A",
+        bg: "rgb(var(--bg-rgb) / <alpha-value>)",
+        surface: "rgb(var(--surface-rgb) / <alpha-value>)",
+        border: "rgb(var(--border-rgb) / <alpha-value>)",
+        text: "rgb(var(--text-rgb) / <alpha-value>)",
+        "text-muted": "rgb(var(--text-muted-rgb) / <alpha-value>)",
+        "text-dim": "rgb(var(--text-dim-rgb) / <alpha-value>)",
+        accent: "rgb(var(--accent-rgb) / <alpha-value>)",
+        "accent-dim": "rgb(var(--accent-dim-rgb) / <alpha-value>)",
       },
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],

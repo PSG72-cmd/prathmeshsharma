@@ -51,11 +51,6 @@ export default function AboutContent() {
 
           <SectionReveal className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="w-full max-w-[340px] border border-border bg-surface p-4 corner-brackets relative">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-border font-mono text-[10px] text-text-dim">
-                <span>SPEC // BIO-DATA</span>
-                <span className="text-accent">VERIFIED</span>
-              </div>
-
               <div className="relative aspect-square w-full overflow-hidden border border-border bg-bg/50">
                 <Image
                   src="/prathmesh.jpg"
@@ -66,27 +61,9 @@ export default function AboutContent() {
                 />
               </div>
 
-              <div className="mt-4 space-y-2 font-mono text-[11px]">
-                <div className="flex justify-between border-b border-border/50 pb-1.5">
-                  <span className="text-text-dim">NAME</span>
-                  <span className="text-text">Prathmesh Sharma</span>
-                </div>
-                <div className="flex justify-between border-b border-border/50 pb-1.5">
-                  <span className="text-text-dim">EDUCATION</span>
-                  <span className="text-text">B.Tech CSE</span>
-                </div>
-                <div className="flex justify-between border-b border-border/50 pb-1.5">
-                  <span className="text-text-dim">INSTITUTION</span>
-                  <span className="text-text">Indus University (&apos;28)</span>
-                </div>
-                <div className="flex justify-between border-b border-border/50 pb-1.5">
-                  <span className="text-text-dim">BASE</span>
-                  <span className="text-text">Ahmedabad, India</span>
-                </div>
-                <div className="flex justify-between pt-0.5">
-                  <span className="text-text-dim">STATUS</span>
-                  <span className="text-accent">Available for roles</span>
-                </div>
+              <div className="mt-3.5 flex items-center justify-between font-mono text-[11px] tracking-wider">
+                <span className="text-text font-medium">PRATHMESH SHARMA</span>
+                <span className="text-text-dim">AHMEDABAD, IN</span>
               </div>
             </div>
           </SectionReveal>

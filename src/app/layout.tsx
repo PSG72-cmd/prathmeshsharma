@@ -64,6 +64,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Providers from "@/components/Providers";
+
 export default function RootLayout({
   children,
 }: {
@@ -72,12 +74,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${schibstedGrotesk.variable} ${ibmPlexMono.variable}`}
     >
       <body className="min-h-screen flex flex-col">
-        <Nav />
-        <main className="flex-1 pt-16">{children}</main>
-        <Footer />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-accent focus:text-bg font-mono text-xs tracking-wider"
+        >
+          Skip to content
+        </a>
+        <Providers>
+          <Nav />
+          <main id="main-content" className="flex-1 pt-16">
+            {children}
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

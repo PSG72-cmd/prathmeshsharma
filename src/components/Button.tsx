@@ -18,7 +18,7 @@ export default function Button({
   external = false,
 }: ButtonProps) {
   const baseClasses =
-    "relative inline-flex items-center font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-3 border transition-all duration-200 cursor-pointer";
+    "relative inline-flex items-center justify-center min-h-[44px] font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-3 border transition-all duration-200 cursor-pointer";
 
   const variantClasses =
     variant === "filled"

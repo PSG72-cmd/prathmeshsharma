@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 import HeroHeadline, { StatusLine } from "@/components/HeroHeadline";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
-import SkillsMarquee from "@/components/SkillsMarquee";
 import SectionReveal, { RevealItem } from "@/components/SectionReveal";
-import { projects, skills } from "@/lib/data";
+import { projects, skills, currentlyExploring } from "@/lib/data";
 import { EXPO_OUT } from "@/lib/motion";
 
 export default function HomePage() {
@@ -24,7 +23,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ─── Hero ───────────────────────────────────────────────────────── */}
+      {/* ─── 1. Hero ──────────────────────────────────────────────────────── */}
       <section className="relative blueprint-grid hero-vignette">
         {/* Corner brackets on section */}
         <div className="corner-brackets mx-auto max-w-6xl px-6 md:px-8 py-20 md:py-28 lg:py-36">
@@ -45,6 +44,7 @@ export default function HomePage() {
                 50+ real users and an AI agent on Google Gemini.
               </motion.p>
 
+              {/* CTA button hierarchy preserved: View Projects = solid fill, Get in Touch = outline */}
               <motion.div
                 className="mt-8 flex flex-wrap gap-4"
                 initial={{ opacity: 0, y: 16 }}
@@ -60,7 +60,7 @@ export default function HomePage() {
               </motion.div>
             </div>
 
-            {/* Profile Card */}
+            {/* Profile Card — Clean photo and simple caption without HUD gimmicks */}
             <motion.div
               className="lg:col-span-5 flex justify-center lg:justify-end"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -68,15 +68,6 @@ export default function HomePage() {
               transition={{ duration: 0.8, ease: EXPO_OUT, delay: 0.6 }}
             >
               <div className="w-full max-w-[320px] sm:max-w-[340px] border border-border bg-surface p-4 corner-brackets relative shadow-2xl">
-                {/* Console header */}
-                <div className="flex items-center justify-between pb-3 mb-3 border-b border-border/80 font-mono text-[10px] tracking-widest text-text-dim">
-                  <span>ID: PS-2024</span>
-                  <span className="flex items-center gap-1.5 text-accent">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                    ONLINE
-                  </span>
-                </div>
-
                 {/* Photo frame */}
                 <div className="relative aspect-square w-full overflow-hidden border border-border bg-bg/50">
                   <Image
@@ -87,14 +78,11 @@ export default function HomePage() {
                     className="object-cover object-center filter grayscale contrast-[1.05] hover:grayscale-0 transition-all duration-500"
                     priority
                   />
-                  <div className="absolute top-2 left-2 font-mono text-[9px] text-accent/80 tracking-widest bg-bg/80 px-1 py-0.5 border border-border/60">
-                    PFP.01
-                  </div>
                 </div>
 
-                {/* Console footer metadata */}
-                <div className="mt-3 pt-3 border-t border-border/80 flex items-center justify-between font-mono text-[10px]">
-                  <span className="text-text font-medium tracking-wider">PRATHMESH SHARMA</span>
+                {/* Simple caption */}
+                <div className="mt-3.5 flex items-center justify-between font-mono text-[11px] tracking-wider">
+                  <span className="text-text font-medium">PRATHMESH SHARMA</span>
                   <span className="text-text-dim">AHMEDABAD, IN</span>
                 </div>
               </div>
@@ -103,45 +91,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Skills Grid — Four Quadrants ────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-6 md:px-8 py-16 md:py-24">
-        <SectionReveal>
-          <h2 className="font-display text-text mb-2">Systems</h2>
-          <p className="font-mono text-[11px] tracking-[0.15em] text-text-dim mb-12">
-            CAPABILITIES BY DOMAIN
-          </p>
-        </SectionReveal>
-
-        <SectionReveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {skills.map((category, i) => (
-            <RevealItem key={category.label} index={i}>
-              <div className="border border-border bg-surface p-6 md:p-8 corner-brackets">
-                <h3 className="font-mono text-[12px] tracking-[0.2em] text-accent mb-4">
-                  {category.label}
-                </h3>
-                <ul className="space-y-2">
-                  {category.items.map((item) => (
-                    <li
-                      key={item}
-                      className="font-mono text-[12px] tracking-wider text-text-muted"
-                    >
-                      <span className="text-text-dim mr-2">&gt;</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </RevealItem>
-          ))}
-        </SectionReveal>
-      </section>
-
-      {/* ─── Skills Strip — Marquee ──────────────────────────────────── */}
-      <section className="py-8">
-        <SkillsMarquee />
-      </section>
-
-      {/* ─── Featured Work — Bento Grid ──────────────────────────────── */}
+      {/* ─── 2. Featured Work (Bento Grid) ─────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 md:px-8 py-16 md:py-24">
         <SectionReveal>
           <h2 className="font-display text-text mb-2">Featured Work</h2>
@@ -157,11 +107,68 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Closing CTA ─────────────────────────────────────────────── */}
+      {/* ─── 3. Systems / Capabilities ───────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 md:px-8 py-16 md:py-24 border-t border-border">
+        <SectionReveal>
+          <h2 className="font-display text-text mb-2">Systems</h2>
+          <p className="font-mono text-[11px] tracking-[0.15em] text-text-dim mb-12">
+            CAPABILITIES BY DOMAIN
+          </p>
+        </SectionReveal>
+
+        {/* Core production domains */}
+        <SectionReveal stagger className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {skills.map((category, i) => (
+            <RevealItem key={category.label} index={i}>
+              <div className="border border-border bg-surface p-6 md:p-8 corner-brackets h-full">
+                <h3 className="font-mono text-[12px] tracking-[0.2em] text-accent mb-4">
+                  {category.label}
+                </h3>
+                <ul className="space-y-2">
+                  {category.items.map((item) => (
+                    <li
+                      key={item}
+                      className="chevron-item font-mono text-[12px] tracking-wider text-text-muted"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </RevealItem>
+          ))}
+        </SectionReveal>
+
+        {/* Clearly labeled "Currently Exploring" sub-strip */}
+        <SectionReveal className="mt-6">
+          <div className="border border-border bg-surface/60 p-5 md:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span className="font-mono text-[11px] tracking-[0.2em] text-accent uppercase font-medium">
+                CURRENTLY EXPLORING
+              </span>
+              <p className="text-text-dim font-mono text-[11px] mt-1">
+                Active systems & robotics research
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {currentlyExploring.map((item) => (
+                <span
+                  key={item}
+                  className="font-mono text-[11px] tracking-wider text-text-muted border border-border bg-bg/50 px-3 py-1.5"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </SectionReveal>
+      </section>
+
+      {/* ─── 4. Closing CTA ───────────────────────────────────────────────── */}
       <section className="border-t border-border">
         <SectionReveal className="mx-auto max-w-6xl px-6 md:px-8 py-16 md:py-24 text-center">
           <h2 className="font-display text-text mb-4">See the full picture</h2>
-          <p className="text-text-muted mb-8 max-w-md mx-auto">
+          <p className="text-text-muted mb-8 max-w-md mx-auto text-sm md:text-base">
             Problem statements, technical approaches, and results for every
             project.
           </p>
